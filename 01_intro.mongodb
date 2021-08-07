@@ -5,7 +5,6 @@
     // show dbs;                  
 //2 use this database otherwise default "test" will be used
     use("kisiler"); 
-
 /* //3 shows which database you are in
     db;                         
 //4 Delete the database wher you are in    
@@ -14,15 +13,44 @@
     db.createCollection("ogrenciler");
 //6 Delete a collection
     db.ogrenciler.drop();
-//7 Adding document to a collection */
-
+//7 Adding document to a collection
     db.ogrenciler.insertOne({"ad":"Ahmet", "yas":41})
     db.ogrenciler.insertOne({"ad":"Mehmet", "yas":41})
 //8 list of the data in document
     db.ogrenciler.find();
 //9 adding more than one document to collection
     db.ogrenciler.insertMany([{"ad":"Ahmet", "yas":4},{"ad":"Ahmet", "yas":1},{"ad":"Ahmet", "yas":8}]);
+    db.ogrenciler.find(); */
+
+//10 Adding a variable to document
+    var tarih= new Date();
+    db.ogrenciler.insertOne({"todays_date": tarih});
+    
+    var tarih1=new ISODate();
+    var ay = tarih1.getMonth();
+    db.ogrenciler.insertOne({"ay":ay});
+
+    use("kisiler")
     db.ogrenciler.find();
+
+    db.dropDatabase();
+
+    db.createCollection("person01C");
+
+    use("person01");
+    db.person01C.insertOne({"person":"Adam"});
+    db.person01C.find();
+
+    use("person01");
+    var month= new Date();
+    db.person01C.insertOne({"date":month});
+    db.person01C.find();
+
+    
+
+
+
+
 
 
 
