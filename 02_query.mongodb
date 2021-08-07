@@ -1,2 +1,37 @@
-use("products")
-db.dropDatabase();
+//1 - Create products database
+    use("productsNEW");
+
+/*     db;
+//2- Add these information to document( price collection)
+    use("productsNEW");
+    db.createCollection("prices");    
+    use("productsNEW");
+
+    db.prices.insertMany([
+        {"produt":"tv","price":5000, "tax":10},
+        {"produt":"phone","price":3500, "tax":20},
+        {"produt":"iron","price":1500, "tax":5},
+        {"produt":"ref","price":4000, "tax":10}
+        ])
+//3- Find the first 3 documents
+    db.prices.find().limit(3);
+//4- Find only 2nd and 3rd document
+    db.prices.find().skip(1).limit(2);
+//5- Show only 1st document( 2 methods can be used)
+    db.prices.find().limit(1);
+    db.prices.findOne();
+//6- Logical query operator( $and, $or, $not, $nor )
+     AND: {$and:[{expression1},{expression2}...]}
+         {field: { $not:{<operator-ifade}}}
+   
+//7- Add new documents
+    // db.prices.insertOne({"name":"furniture","price":5000, "tax":10})
+//8- List the items whose price is 5000
+    db.prices.find({"price":5000});
+    db.prices.find({"price":{$eq:4000}}); */
+//9- Find the document whose price is 4000 and name is "tv"
+    db.prices.find({$and:[{"price":3500},{"tax":20}]});
+//10- name is "phone" or price 4000
+    db.prices.find({$or:[{"produt": "phone"},{"price":4000}]})
+//11- list whose tak is not 10
+    db.prices.find({{"tax":{$not:{$eq:10}}});
