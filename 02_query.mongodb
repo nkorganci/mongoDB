@@ -1,7 +1,6 @@
 //1 - Create products database
     use("productsNEW");
-
-/*     db;
+  /*     db;
 //2- Add these information to document( price collection)
     use("productsNEW");
     db.createCollection("prices");    
@@ -23,15 +22,65 @@
 //6- Logical query operator( $and, $or, $not, $nor )
      AND: {$and:[{expression1},{expression2}...]}
          {field: { $not:{<operator-ifade}}}
-   
 //7- Add new documents
     // db.prices.insertOne({"name":"furniture","price":5000, "tax":10})
 //8- List the items whose price is 5000
     db.prices.find({"price":5000});
-    db.prices.find({"price":{$eq:4000}}); */
+    db.prices.find({"price":{$eq:4000}});
 //9- Find the document whose price is 4000 and name is "tv"
     db.prices.find({$and:[{"price":3500},{"tax":20}]});
 //10- name is "phone" or price 4000
-    db.prices.find({$or:[{"produt": "phone"},{"price":4000}]})
+    db.prices.find({$or:[{"produt": "phone"},{"price":4000}]}) */
 //11- list whose tak is not 10
-    db.prices.find({{"tax":{$not:{$eq:10}}});
+    // db.prices.find({{"tax":{$not:{$eq:10}}}); 
+//12- neither name is "tv" nor tax=10
+    // db.prices.find({$nor:[{"produt":"tv"},{"tax":10}]});
+//13- List of the prices whose names are "tv", projection method
+    // db.prices.find({"produt":"tv"},{"price":1,"tax":1,"_id":0});
+//14 Show only price and tax valus of all documents, you can close only "id"
+    // db.prices.find({},{"tax":1,"_id":0});
+//15 if name is phone, list name and its price as a list
+    // {filter},{ projection: what to show}
+    // db.prices.find({"produt":"tv"},{"produt":1,"price":1});
+
+// ================ [COMPARISON OPERATORS] ===================
+/*  $eq ->Matches values that are equal to a specified value.
+    $gt ->Matches values that are greater than a specified value.
+    $gte->Matches values that are greater than or equal to a specified value.
+    $in ->Matches any of the values specified in an array.
+    $lt ->Matches values that are less than a specified value.
+    $lte->Matches values that are less than or equal to a specified value.
+    $ne ->Matches all values that are not equal to a specified value.
+    $nin->Matches none of the values specified in an array. 
+    SYNTAX:  {field: {$gte:value}}
+    */
+
+/* //16- List the items whose price is 5000
+    db.prices.find({"price":{$eq:5000}});
+//17- prices greater than and equal 3500, show only name and price, not Id
+    db.prices.find({"price":{$gte:4000}},{"price":1,"_id":0});
+//18- Price equal to or smaller than 4000, just list names
+    db.prices.find({"price":{$lte:4000}},{"produt":1, "_id":0});
+//19- If price is 4000 or 5000 or 3500 , show only names
+    //1st Way: in operator
+    db.prices.find({"price":{$in:[1500, 500,3500]}}, {"_id":0} );
+    //2nd Way: or opertor
+    db.prices.find({$or:[{"price":3500},{"tax":30},{"produt":"hi"}]},{"_id":0});
+//20- if price not equal to 1500, 700
+    db.prices.find({"price":{$nin:[1500,5000]}});
+//21- price<5000 and name not equal to "tv", show only name and price
+    db.prices.find({"price":{$lt:5000},"produt":{$ne:"tv"}},{"produt":1})
+//22- price<5000 OR name="tv", show only name and price
+    db.prices.find({$or:[{"price":{$lt:5000}},{"produt":"tv"}]},{"produt":1,"price":1,"_id":0})
+ */
+
+//================= SORT (query,projection(which one to show)) ========================================
+    // 1 increase, -1 decrease, it sort according to ASCII values
+//22- Sort according to prices ( add filter in sort)
+    db.prices.find().sort({"price":1});
+//23- Sort according to prices but show only prices
+    // db.prices.find({},{"price":1, "_id":0}).sort({"price":1});
+//24- Sort according to names
+    db.prices.find().sort({"produt":1});
+//25- price=5000, list names from a t0 z
+    db.prices.find({"price":5000},{"name":1, "_id":0}).sort({"name":1});

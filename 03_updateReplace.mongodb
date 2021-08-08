@@ -1,0 +1,20 @@
+//============  UPDATE REPLACE DELETE =================
+
+// 1- findOneAndReplace (change all)
+//* Replace  first one and delete others( like put in API)
+//* VSCODE shows unupdated document
+//* SYNTAX: db.collection.findOneAndReplace(filter,replacement,options)
+
+// 2- findOneAndUpdate ( like patch in API)
+//* update first one and does not change others.
+//* VSCODE shows unupdated document
+//* SYNTAX: db.collection.findOneAndUpdate(filter,update,options)
+
+use("productsNew");
+db.createCollection("personn");
+db.personn.insertMany([
+    {"name":"ali","salary":4000, "date": new Date("2012-03-01")},
+    {"name":"veli","salary":2000, "date": new Date("2014-03-01")},
+    {"name":"Bera","salary":3000, "date": new Date("2015-03-01")},
+    {"name":"Enver","salary":5000, "date": new Date("2016-03-01")}]);
+
