@@ -1,20 +1,47 @@
 //============  UPDATE REPLACE DELETE =================
 
-// 1- findOneAndReplace (change all)
+// 1- ==========>>> findOneAndReplace (change all)
 //* Replace  first one and delete others( like put in API)
 //* VSCODE shows unupdated document
 //* SYNTAX: db.collection.findOneAndReplace(filter,replacement,options)
 
-// 2- findOneAndUpdate ( like patch in API)
+// 2- ==========>> findOneAndUpdate ( like patch in API)
 //* update first one and does not change others.
 //* VSCODE shows unupdated document
-//* SYNTAX: db.collection.findOneAndUpdate(filter,update,options)
+//* SYNTAX: db.collection.findOneAndUpdate($set, $inc, $mul... atomic operators are used)
 
-use("productsNew");
-db.createCollection("personn");
-db.personn.insertMany([
+use("persondb");
+// db.createCollection("per");
+/* db.per.insertMany([
     {"name":"ali","salary":4000, "date": new Date("2012-03-01")},
     {"name":"veli","salary":2000, "date": new Date("2014-03-01")},
     {"name":"Bera","salary":3000, "date": new Date("2015-03-01")},
-    {"name":"Enver","salary":5000, "date": new Date("2016-03-01")}]);
+    {"name":"Enver","salary":5000, "date": new Date("2016-03-01")}]); */
 
+//3- filter  with salary<4000, and update to 4000
+    // db.per.findOneAndReplace({"salary":{$lte:4000}},{"salary":8000});
+//4- if salary=5000, make it 9000, and change name to Adam, start date to today
+    // db.per.findOneAndReplace({"salary":5000},{"salary":9000, "date":new Date(),"name":"mirzaa" });
+//5- find the lowest salary, let its name is noname, date nodate,  salary 0
+    // db.per.findOneAndReplace({},{"salary":0,"name":"noname"},{sort:{"salary":1}});
+//6- if salary=6000, change it to 8000, others are same
+    // db.per.findOneAndUpdate({"salary":0},{$set:{"salary":2000}});
+//7- if salary=6000, increase it by %10
+    // db.per.findOneAndUpdate({"salary":8000},{$mul:{"salary":1.1}})
+//8- if salary 8800, , at extra 1000, dont change others
+    // db.per.findOneAndUpdate({"salary":8800},{$inc:{"salary":1000}});
+//9- if salary is 9800, make name "mirza", date today;
+    // db.per.findOneAndUpdate({"salary":9800},{$set:{"name":"Mirza", "date": new Date(), "sample2":"sample1"}},{upsert:true});
+
+//10-============= [updateOne - updateMany - update(depreceated)]=============
+    // updateOne==>> return statistics, change 1st one
+//11- update the Mirza's salary to 15000
+    // db.per.updateOne({"name":"Mirza"},{$set:{"maas":11}});
+//12-if salary is 2000,, find all and  add prim:1000
+    // db.per.updateMany({"salary":6546},{$set:{"prim":1000}},{upsert:true});
+//13 - if salary is less than 4000, add prim information
+        //====== UPDATE does same for updateOne and updateMany but add multi:true
+//14- ==============DELETEONE, DELETEMANY========================
+    // db.per.deleteOne({"sample":"sample1"});//Delete all information
+//15- How can I delete all data
+    // db.per.deleteMany();
