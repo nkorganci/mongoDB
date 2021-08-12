@@ -58,29 +58,32 @@ use("kisiler");
 ////---------------------------------------------------------------------------------
 //// 2) asagidaki dokumanlari collection'a kaydedelim.   
 // //---------------------------------------------------------------------------------
-// db.ogrenciler.insertMany([
-// {"isim": "Tarik", "yas":17, "sube": "A", "not":97, "dersler":["fizik", "mat"]}, 
-// {"isim": "Selim", "yas":37, "sube": "A","not":77,},
-// {"isim": "Nalan", "yas":17, "sube": "B","not":55, "dersler":["fizik", "inglizce"]},
-// {"isim": "Burhan", "yas":21, "sube": "B","not":43, "dersler":["fizik", "mat"]},
-// {"isim": "Niyazi", "yas":40, "sube": "B","not":99, "dersler":["inglizce"]},
-// {"isim": "Galip", "yas":37, "sube": "A","not":34, "dersler":["inglizce"]},
-// {"isim": "Teslime", "yas":24, "sube": "A","not":88, "dersler":["mat","fizik","kimya"]}]);
+/* db.ogrenciler.insertMany([
+{"isim": "Tarik", "yas":17, "sube": "A", "not":97, "dersler":["fizik", "mat"]}, 
+{"isim": "Selim", "yas":37, "sube": "A","not":77,},
+{"isim": "Nalan", "yas":17, "sube": "B","not":55, "dersler":["fizik", "inglizce"]},
+{"isim": "Burhan", "yas":21, "sube": "B","not":43, "dersler":["fizik", "mat"]},
+{"isim": "Niyazi", "yas":40, "sube": "B","not":99, "dersler":["inglizce"]},
+{"isim": "Galip", "yas":37, "sube": "A","not":34, "dersler":["inglizce"]},
+{"isim": "Teslime", "yas":24, "sube": "A","not":88, "dersler":["mat","fizik","kimya"]}]); */
+
 
 ///---------------------------------------------------------------------------------
 //// 3) yasi 30'dan buyuk olan ogrencileri sorguyulayiniz.   
 ////---------------------------------------------------------------------------------
-// db.ogrenciler.aggregate({$match:{yas : {$gt:30}}});
+// db.ogrenciler.aggregate({$match:{yas:{$gt:30}}});
 
 ////---------------------------------------------------------------------------------
 //// 4) B subesindeki yasi 30'dan kucuk olan ogrencileri sorgulayiniz.   
 ////---------------------------------------------------------------------------------
+    
 // db.ogrenciler.aggregate({$match: {sube:"B", yas: {$lt:30}}})
-
+    
 ////---------------------------------------------------------------------------------
 //// 5) B-subesindeki ogrenci sayisini hesaplayan sorguyu yaziniz. NOT: SAYMAK icin 
 ////    $match icerisinde $count metodu kullanilabilir. 
 ////---------------------------------------------------------------------------------
+
 // db.ogrenciler.aggregate( {$match: {sube:"B"}}, {$count:"B-Subesi Ogrenci Sayisi"} );
 
 // NOT:Sadece saymak icin dogrudan db.colection.count() metoduda kullanilabilir.
@@ -145,7 +148,7 @@ use("kisiler");
 //// 12) kisiler veritabanı altında hesaplar ismiyle yeni bir collection olusturunuz
 //       ve degerleri girginiz.
 ////---------------------------------------------------------------------------------
-use("kisiler")
+// use("kisiler")
 // db.hesaplar.insertMany(
 // [{"isim" : "ali", "harcamalar":[-80, -40, -50, -120], "kazanc":[100, 150]},
 // {"isim" : "Can", "harcamalar" : [-60, -30, -20], "kazanc" : [200, 50, 130] },
