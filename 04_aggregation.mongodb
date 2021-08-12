@@ -98,13 +98,15 @@ use("kisiler");
 ////    her bir grup icin 1 sayisinin donmesini ve bunlarin toplanmasini saglar.
 ////---------------------------------------------------------------------------------
 
-// db.ogrenciler.aggregate ({$group:{_id: "$sube", toplamOgrenci: {$sum: 1}}});
+//  db.ogrenciler.aggregate ({$group:{_id: "$sube", toplamOgrenci: {$sum: 1}}});
 
 ////---------------------------------------------------------------------------------
 //// 7) Tum subelerdeki toplam ogrenci sayilarini ve her subedeki maks notu hesaplayan 
 ////    sorguyu yaziniz.
 ////    NOT: Group isleminde degiskenlerin onune $ isareti konulmalidir.
 ////----------------------------------------------------------------------------------
+
+
 // var pipeline ={$group:{_id:"$sube", toplamOgrenci:{$sum:1}, maksNot:{$max:"$not"}}}
 // db.ogrenciler.aggregate(pipeline);
 
