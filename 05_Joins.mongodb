@@ -12,7 +12,7 @@
 
 use("kisiler");
 
-db.romanlar.insertMany(
+/* db.romanlar.insertMany(
 [{"yazar" : "Mehmet Bak", "fiyat" : 60, "yayinEvi" : "Yildiz", "adet": 1000 },
 {"yazar" : "Ali Gel", "fiyat" : 75, "yayinEvi" : "MaviAy", "adet": 1200 },
 {"yazar" : "Su Ak", "fiyat" : 90, "yayinEvi" : "Caliskan", "adet": 2200},
@@ -26,18 +26,17 @@ db.denemeler.insertMany(
 {"muellif" : "Su Ak", "fiyat" : 50, "yayinEvi" : "MorEv", "adet": 200},
 {"muellif" : "İsmet Kaç", "fiyat" : 25, "yayinEvi" : "Hedef","adet": 800},
 {"muellif" : "Ali Gel", "fiyat" : 40, "yayinEvi" : "Hedef", "adet": 1200 },
-{"muellif" : "Meryem Can", "fiyat" : 22, "yayinEvi" : "MaviAy","adet": 300}]);
+{"muellif" : "Meryem Can", "fiyat" : 22, "yayinEvi" : "MaviAy","adet": 300}]); */
 
 ////---------------------------------------------------------------------------------
 //// 1)  Her 2 collection'dan tum dokumanlari "adet" sutununa (field) gore siralayarak 
 ////     listeleyiniz. (FULL JOIN)
 // ////---------------------------------------------------------------------------------
 
-db.romanlar.aggregate([
-  {},
-  {},
-  {}
-  ]);
+/* db.romanlar.aggregate([
+  {$unionWith:{coll:"denemeler"}},
+  {$sort:{adet:-1}},
+  ]); */
 
 // db.romanlar.aggregate([
 //  {$unionWith: { coll: "denemeler"}},
@@ -45,11 +44,10 @@ db.romanlar.aggregate([
 // ]); 
 
 /* db.denemeler.aggregate([
- {$unionWith: { coll: "romanlar"}},
- {$sort:{adet: -1}},
- {$project: {_id:0}}
-]);  */
-
+  {$unionWith:{coll:"romanlar"}},
+  {$sort:{adet:-1}},
+  {$project:{_id:0}}
+]) */
 ////---------------------------------------------------------------------------------
 //// 2) Her bir yayinevinin toplam kitap sayilarini (2 collection icin) hesaplayan 
 ////    ve siralayan sorguyu yaziniz. 
