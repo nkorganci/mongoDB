@@ -114,6 +114,7 @@ use("kisiler");
 //// 8) yasi 30'Dan kucuk olanlarin subelere gore not ortalamalarini hesaplayan 
 ////    sorguyu yaziniz.
 ////---------------------------------------------------------------------------------
+
 // db.ogrenciler.aggregate([
 //   {$match:{yas :{$lt:30}}},
 //   {$group: {_id:"$sube",ortalamaNot: {$avg: "$not"}}}
@@ -122,6 +123,7 @@ use("kisiler");
 ////---------------------------------------------------------------------------------
 //// 9) inglizce dersini alanlarin subelere gore sayilari hesaplayan sorguyu yaziniz.
 ////---------------------------------------------------------------------------------
+
 // db.ogrenciler.aggregate([
 //     {$match:{dersler: "inglizce"}},
 //     {$group:{_id:"$sube", IngAlanlarinSayisi:{$sum:1}}}
@@ -149,7 +151,7 @@ use("kisiler");
 //// 12) kisiler veritabanı altında hesaplar ismiyle yeni bir collection olusturunuz
 //       ve degerleri girginiz.
 ////---------------------------------------------------------------------------------
-// use("kisiler")
+use("kisiler")
 // db.hesaplar.insertMany(
 // [{"isim" : "ali", "harcamalar":[-80, -40, -50, -120], "kazanc":[100, 150]},
 // {"isim" : "Can", "harcamalar" : [-60, -30, -20], "kazanc" : [200, 50, 130] },
